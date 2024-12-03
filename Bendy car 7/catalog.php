@@ -14,6 +14,7 @@ $result = $conn->query($query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Katalog Kendaraan</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
@@ -21,9 +22,8 @@ $result = $conn->query($query);
         <nav>
             <ul>
                 <li><a href="index.php"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="register.php"><i class="fas fa-user-plus"></i> Register</a></li>
-                <li><a href="login.php"><i class="fas fa-sign-in-alt"></i> Login</a></li>
                 <li><a href="catalog.php" class="active"><i class="fas fa-car-side"></i> Vehicles</a></li>
+                <li><a href="pengembalian.php"><i class="fas fa-undo"></i> Returns</a></li>
             </ul>
         </nav>
     </header>

@@ -1,32 +1,16 @@
+
 <?php
+// Pastikan database connection di-include
 include 'db_connection.php';
 session_start();
 
+// Cek sesi login
 if (!isset($_SESSION['user'])) {
     echo "<script>alert('Silakan login terlebih dahulu!'); window.location='login.php';</script>";
     exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['transaksi_id'])) {
-        $transaksi_id = intval($_POST['transaksi_id']);
-        
-        $updateTransaksiQuery = "UPDATE transaksi SET status = 'dikembalikan' WHERE id = ?";
-        $stmtTransaksi = $conn->prepare($updateTransaksiQuery);
-        $stmtTransaksi->bind_param("i", $transaksi_id);
-        $stmtTransaksi->execute();
-        $stmtTransaksi->close();
-
-        $updateKendaraanQuery = "UPDATE kendaraan SET status = 'available' WHERE id = (SELECT kendaraan_id FROM transaksi WHERE id = ?)";
-        $stmtKendaraan = $conn->prepare($updateKendaraanQuery);
-        $stmtKendaraan->bind_param("i", $transaksi_id);
-        $stmtKendaraan->execute();
-        $stmtKendaraan->close();
-
-        echo "<script>alert('Pengembalian berhasil diproses!'); window.location='pengembalian.php';</script>";
-    }
-}
-
+// Ambil data transaksi dengan join ke tabel kendaraan
 $query = "SELECT t.*, k.nama_kendaraan 
           FROM transaksi t
           JOIN kendaraan k ON t.kendaraan_id = k.id
@@ -41,7 +25,6 @@ $result = $conn->query($query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pengembalian Kendaraan</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
@@ -49,9 +32,11 @@ $result = $conn->query($query);
         <nav>
             <ul>
                 <li><a href="index.php"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="register.php"><i class="fas fa-user-plus"></i> Register</a></li>
+                <li><a href="login.php"><i class="fas fa-sign-in-alt"></i> Login</a></li>
                 <li><a href="catalog.php"><i class="fas fa-car-side"></i> Vehicles</a></li>
                 <li><a href="pengembalian.php" class="active"><i class="fas fa-undo"></i> Returns</a></li>
-                <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                <li><a href="manage.php"><i class="fas fa-tasks"></i> Manage</a></li>
             </ul>
         </nav>
     </header>

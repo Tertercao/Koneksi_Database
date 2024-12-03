@@ -15,7 +15,6 @@
         <nav>
             <ul>
                 <li><a href="index.php"><i class="fas fa-home"></i> Home</a></li>
-                <li><a href="register.php"><i class="fas fa-user-plus"></i> Register</a></li>
                 <li><a href="login.php"><i class="fas fa-sign-in-alt"></i> Login</a></li>
                 <li><a href="catalog.php"><i class="fas fa-car-side"></i> Vehicles</a></li>
                 <li><a href="pengembalian.php"><i class="fas fa-undo"></i> Returns</a></li>

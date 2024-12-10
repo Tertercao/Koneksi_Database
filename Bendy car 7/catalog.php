@@ -24,6 +24,9 @@ $result = $conn->query($query);
                 <li><a href="index.php"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="catalog.php" class="active"><i class="fas fa-car-side"></i> Vehicles</a></li>
                 <li><a href="pengembalian.php"><i class="fas fa-undo"></i> Returns</a></li>
+                <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] == 'admin'): ?>
+                    <li><a href="manage.php"><i class="fas fa-tasks"></i>Manage</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>
@@ -36,11 +39,15 @@ $result = $conn->query($query);
                     <p>Harga: Rp. <?php echo number_format($row['harga_sewa'], 0, ',', '.'); ?>/hari</p>
                     <form action="pinjam.php" method="POST">
                         <input type="hidden" name="kendaraan_id" value="<?php echo $row['id']; ?>">
+                        <i class="fas fa-car" style="font-size: 30px; color: #2c3e50;"></i>
                         <button type="submit">Pinjam</button>
                     </form>
                 </div>
             <?php } ?>
         </div>
     </main>
+    <footer>
+        <p>© 2024 PT BendyCar | All Rights Reserved</p>
+    </footer>
 </body>
 </html>

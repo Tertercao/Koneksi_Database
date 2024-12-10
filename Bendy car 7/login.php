@@ -1,6 +1,7 @@
 <?php include 'db_connection.php'; ?>
 <?php
 session_start();
+//print_r($_SESSION);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -12,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $user = $result->fetch_assoc();
         if (password_verify($password, $user['password'])) {
             $_SESSION['user'] = $user;
-            echo "<script>alert('Login berhasil!'); window.location='catalog.php';</script>";
+            echo "<script>alert('Login berhasil!'); window.location='index.php';</script>";
         } else {
             echo "<script>alert('Password salah!');</script>";
         }

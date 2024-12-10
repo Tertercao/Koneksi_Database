@@ -18,7 +18,6 @@
                 <li><a href="login.php"><i class="fas fa-sign-in-alt"></i> Login</a></li>
                 <li><a href="catalog.php"><i class="fas fa-car-side"></i> Vehicles</a></li>
                 <li><a href="pengembalian.php"><i class="fas fa-undo"></i> Returns</a></li>
-                <li><a href="manage.php"><i class="fas fa-tasks"></i> Manage</a></li>
             </ul>
         </nav>
     </header>
@@ -26,7 +25,6 @@
         <section class="hero">
             <h2>Selamat Datang di PT BendyCar</h2>
             <p>Menyediakan solusi transportasi terbaik untuk Anda!</p>
-            <a href="catalog.php" class="btn">Lihat Kendaraan</a>
         </section>
     </main>
     <footer>
